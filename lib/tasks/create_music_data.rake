@@ -15,30 +15,9 @@ namespace :music_data do
       genres.each do |genre|
         genre_record = Genre.find_or_create_by(name: genre)
 
-        GenresCountry.create(genre_id: genre_record.id, country_id: country_record.id)
+        CountryGenre.create(genre_id: genre_record.id, country_id: country_record.id)
       end
 
     end
   end
 end
-
-
-  # task create_countries: :environment do
-  #   countries = page.css('.country > text()').map { |a| a.text}
-  #   countries.drop(6).each do |country|
-  #     Country.create(
-  #       name: country
-  #     )
-  #   end
-  # end
-  #
-  # task create_genres: :environment do
-  #   genres = page.css('.genre').map {|g| g.text}
-  #   genres.each do |genre|
-  #     Genre.create(
-  #       name: genre
-  #     )
-  #   end
-#   end
-#
-# end
