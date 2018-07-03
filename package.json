@@ -1,0 +1,8 @@
+{
+  "name": "spotify_world",
+  "private": true,
+  "dependencies": {
+    "highcharts": "^6.1.1",
+    "jquery": "^3.3.1"
+  }
+}
