@@ -54,6 +54,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
         point: {
           events: {
             click: function() {
+              $('.genres').empty()
               $.ajax({
                 url: "/country",
                 dataType: 'json',
@@ -73,7 +74,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 },
                 success: function(countryGenre) {
                   for (let i = 0; i < countryGenre.length; i++) {
-                    let genreCard = $(`<img class="icon-xsm d-inline" src="assets/${iconType}-icon.png"><li class='genre-card' data-genre-name='${countryGenre[i].name}'>${countryGenre[i].name}</li>`)
+                    let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm mx-3" src="assets/${countryGenre[i].icon}-icon.png">${countryGenre[i].name}</li>`)
                     $('.genres').append(genreCard)
                   }
 
