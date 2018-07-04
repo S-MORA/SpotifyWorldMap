@@ -2,6 +2,7 @@
   "name": "spotify_world",
   "private": true,
   "dependencies": {
+    "bootstrap": "4.1.1",
     "highcharts": "^6.1.1",
     "jquery": "^3.3.1"
   }

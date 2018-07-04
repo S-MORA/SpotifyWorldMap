@@ -11,18 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap/scss/bootstrap
  *= require_self
  */
 
-#container {
-  height: 500px;
-  min-width: 310px;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.loading {
-  margin-top: 10em;
-  text-align: center;
-  color: gray;
+html, body {
+  height: 100%
 }

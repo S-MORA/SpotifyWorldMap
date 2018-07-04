@@ -19,7 +19,6 @@
 
 $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53f80ce1850b9060c0/samples/data/world-population-density.json', function(data) {
 
-
   // Prevent logarithmic errors in color calulcation
   $.each(data, function() {
     this.value = (this.value < 1 ? 1 : this.value);
@@ -27,15 +26,14 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
   });
 
 
-
   // Initiate the chart
-  Highcharts.mapChart('container', {
+  Highcharts.mapChart('map-container', {
     chart: {
       map: 'custom/world'
     },
 
     title: {
-      text: 'Zoom in on country by double click'
+      text: 'Global SHUT UP RALUCA'
     },
 
     mapNavigation: {
@@ -65,20 +63,45 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                   $('iframe').attr('src', json.uri)
                 },
               })
+              $.ajax({
+                url: "/genres",
+                dataType: 'json',
+                data: {
+                  country: this.name
+                },
+                success: function(json) {
+                  for (let i = 0; i < json.length; i++) {
+                    let genre_card = $(`<li class='genre-card' data-genre-name='${json[i].name}'>${json[i].name}</li>`)
+                    $('.genres').append(genre_card);
+                  }
 
+                  $('.genres').click(function(event) {
+                    let genreName = event.target.getAttribute('data-genre-name');
+                    $.ajax({
+                      url: "/play-genre",
+                      dataType: 'json',
+                      data: {
+                        genre: genreName
+                      },
+                      success: function(genre) {
+                        $('iframe').attr('src', genre.uri)
+                      }
+                    });
+                  })
+                }
+              })
             }
           }
         }
       }
     },
-
     series: [{
       data: data,
       joinBy: ['iso-a3', 'code3'],
       name: 'Population density',
       states: {
         hover: {
-          color: 'red'
+          color: 'yellow'
         }
       },
       tooltip: {

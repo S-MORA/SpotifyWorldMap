@@ -6,13 +6,26 @@ class LandingController < ApplicationController
   end
 
   def index
-   playlist = RSpotify::Playlist.find('wizzler', '00wHcTN0zQiun4xri9pmvX')
+   playlist =  RSpotify::Playlist.search("The Sound Of Chicago Soul").first
    @URI = playlist.uri
   end
 
   def country
     country = params[:country]
     playlist =  RSpotify::Playlist.search("The Sound Of #{country}").first
+    @URI = "https://open.spotify.com/embed?uri=#{playlist.uri}"
+    render json: {uri: @URI}
+  end
+
+  def country_genres
+    country = params[:country]
+    @countrygenres = Country.find_by('name': country).genres
+    render json: @countrygenres
+  end
+
+  def play_genre
+    genre = params[:genre]
+    playlist =  RSpotify::Playlist.search("The Sound of #{genre}").first
     @URI = "https://open.spotify.com/embed?uri=#{playlist.uri}"
     render json: {uri: @URI}
   end
