@@ -4,10 +4,15 @@
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
 $black: #222326;
 $dark-black: #121314;
+$light-gray: #DCDCDC;
 
 
 .icon-sm {
   width: 50px
+}
+
+.icon-xsm{
+  width: 20px
 }
 
 .logo {
@@ -30,23 +35,20 @@ $dark-black: #121314;
   padding: 0;
   margin: 0;
   li{
-    padding: 20px;
-    color: white;
-    background-color: gray;
-    margin-bottom: 1px;
-    border-left: 10px solid transparent;
+    padding: 15px;
+    color: $light-gray;
+    cursor: pointer;
     &.active {
       border-color: #e35205
      }
     }
   }
 
-  .genre-card {
-    border: black;
-    cursor: pointer;
-  }
-
   // content map
 #map-container {
   max-height: 90vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
 }

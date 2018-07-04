@@ -30,11 +30,12 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
     chart: {
       map: 'custom/world',
       backgroundColor: '#121314',
-      height: '650'
+      height: '55%',
+      reflow: false
     },
 
     title: {
-      text: 'Global SHUT UP RALUCA'
+      text: 'mUSSSIQMAP'
     },
 
     mapNavigation: {
@@ -70,10 +71,10 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 data: {
                   country: this.name
                 },
-                success: function(json) {
-                  for (let i = 0; i < json.length; i++) {
-                    let genre_card = $(`<li class='genre-card' data-genre-name='${json[i].name}'>${json[i].name}</li>`)
-                    $('.genres').append(genre_card);
+                success: function(countryGenre) {
+                  for (let i = 0; i < countryGenre.length; i++) {
+                    let genreCard = $(`<img class="icon-xsm d-inline" src="assets/${iconType}-icon.png"><li class='genre-card' data-genre-name='${countryGenre[i].name}'>${countryGenre[i].name}</li>`)
+                    $('.genres').append(genreCard)
                   }
 
                   $('.genres').click(function(event) {
