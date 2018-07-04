@@ -19,7 +19,6 @@
 
 $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53f80ce1850b9060c0/samples/data/world-population-density.json', function(data) {
 
-  // Prevent logarithmic errors in color calulcation
   $.each(data, function() {
     this.value = (this.value < 1 ? 1 : this.value);
 
@@ -29,7 +28,9 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
   // Initiate the chart
   Highcharts.mapChart('map-container', {
     chart: {
-      map: 'custom/world'
+      map: 'custom/world',
+      backgroundColor: '#121314',
+      height: '650'
     },
 
     title: {
@@ -107,6 +108,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
       tooltip: {
         valueSuffix: '/km²'
       }
-    }]
+    }],
+
   });
 });

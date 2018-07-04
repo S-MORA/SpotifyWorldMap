@@ -1,17 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-      <div class="col-md-2 sidebar">
-        <%=image_tag image_path('logo.png'), class: 'icon-sm'%> 
-      <div>Global Jams</div>
-       <ul class="nav nav-sidebar genres"></ul>
-      </div>
+    <div class="col-md-2 sidebar">
+      <div class="row">
+        <div class="col-5">
+          <%=image_tag image_path('logo.png'), class: 'icon-sm'%>
+        </div>
+        <div class="col-7">
+          <span class="logo float-right">global jams</span>
+        </div>
+        </div>
+           <ul class="nav nav-sidebar genres"></ul>
+          </div>
 
-    <div class="col-md-10 content">
-      <div id="map-container"></div>
-    </div>
+        <div class="col-md-10 px-0">
+          <div id="map-container"></div>
+        </div>
+
     <div class="row">
-      <div class="col-12 sticky">
-            <iframe src="https://open.spotify.com/embed?uri=<%=@URI%>" width="1300px" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <div class="col-12">
+            <iframe src="https://open.spotify.com/embed?uri=<%=@URI%>" width="1000px" height="100vh" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     </div>
 
