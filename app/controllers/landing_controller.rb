@@ -11,9 +11,8 @@ class LandingController < ApplicationController
   end
 
   def country
-    country = params[:country]
-    playlist =  RSpotify::Playlist.search("The Sound of #{country}").first
-    @URI = "https://open.spotify.com/embed?uri=#{playlist.uri}"
+    country = Country.find_by('name': params[:country])
+    @URI = "https://open.spotify.com/embed?uri=#{country.uri}"
     render json: {uri: @URI}
   end
 

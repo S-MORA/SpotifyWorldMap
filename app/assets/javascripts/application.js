@@ -77,12 +77,12 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 success: function(countryGenre) {
 
                   for (let i = 0; i < countryGenre.length; i++) {
-
-                    let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm mx-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${countryGenre[i].name}</span></li>`)
+                    let genreCard = $(`<li class='genre-card'><img class="icon-xsm mx-4" src="assets/${countryGenre[i].icon}-icon.png"><span data-genre-name='${countryGenre[i].name}'>${countryGenre[i].name}</span></li>`)
                     $('.genres').append(genreCard)
                   }
 
                   $('.genres').click(function(event) {
+                    console.log(event.target.getAttribute('data-genre-name'))
                     let genreName = event.target.getAttribute('data-genre-name');
                     $.ajax({
                       url: "/play-genre",
