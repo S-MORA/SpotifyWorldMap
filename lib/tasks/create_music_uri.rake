@@ -40,10 +40,3 @@ def check_playlists(type)
     end
   end
 end
-
-# puts 'not found'
-# offset += 50
-# check_playlists(user, genre, offset)
-# break
-# spotify.playlists(limit: 50, offset: 7100)[48].name - LAST SEARCH WITH A VALUE
-# 7147 playlists this fck
