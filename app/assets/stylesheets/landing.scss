@@ -12,7 +12,7 @@ $light-gray: #DCDCDC;
 }
 
 .icon-xsm{
-  width: 16px
+  width: 18px
 }
 
 .logo {
@@ -35,7 +35,7 @@ $light-gray: #DCDCDC;
   padding: 0;
   margin: 0;
   li{
-    padding: 15px;
+    padding: 12px 0px;
     color: $light-gray;
     cursor: pointer;
     &.active {

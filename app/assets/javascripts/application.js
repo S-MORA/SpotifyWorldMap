@@ -18,7 +18,7 @@
 
 
 $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53f80ce1850b9060c0/samples/data/world-population-density.json', function(data) {
-
+  console.log(data)
   $.each(data, function() {
     this.value = (this.value < 1 ? 1 : this.value);
 
@@ -54,6 +54,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
         point: {
           events: {
             click: function() {
+              console.log(this.name)
               $('.genres').empty()
               $.ajax({
                 url: "/country",
@@ -64,6 +65,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 success: function(json) {
                   console.log(json)
                   $('iframe').attr('src', json.uri)
+
                 },
               })
               $.ajax({
@@ -73,8 +75,10 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                   country: this.name
                 },
                 success: function(countryGenre) {
+
                   for (let i = 0; i < countryGenre.length; i++) {
-                    let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm mx-3" src="assets/${countryGenre[i].icon}-icon.png">${countryGenre[i].name}</li>`)
+
+                    let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm mx-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${countryGenre[i].name}</span></li>`)
                     $('.genres').append(genreCard)
                   }
 
