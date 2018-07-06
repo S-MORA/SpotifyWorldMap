@@ -2,17 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
+@import url('https://fonts.googleapis.com/css?family=Assistant:600');
+
 $black: #222326;
 $dark-black: #121314;
 $light-gray: #DCDCDC;
+$green: #1db954;
 
 
 .icon-sm {
   width: 50px
 }
 
-.icon-xsm{
-  width: 18px
+.icon-xsm {
+  width: 68px
 }
 
 .logo {
@@ -37,12 +40,19 @@ $light-gray: #DCDCDC;
   li{
     padding: 12px 0px;
     color: $light-gray;
+    font-size: 15px;
+    font-family: 'Assistant', sans-serif;
     cursor: pointer;
     &.active {
-      border-color: #e35205
+      border-left: 5px solid $green;
+     }
+     &:hover{
+       color: white;
      }
     }
   }
+
+
 
   // content map
 #map-container {

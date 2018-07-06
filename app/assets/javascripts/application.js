@@ -31,11 +31,10 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
       map: 'custom/world',
       backgroundColor: '#121314',
       height: '55%',
-      reflow: false
     },
 
     title: {
-      text: 'mUSSSIQMAP'
+      text: 'About'
     },
 
     mapNavigation: {
@@ -77,13 +76,22 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 success: function(countryGenre) {
 
                   for (let i = 0; i < countryGenre.length; i++) {
-                    let genreCard = $(`<li class='genre-card'><img class="icon-xsm mx-4" src="assets/${countryGenre[i].icon}-icon.png"><span data-genre-name='${countryGenre[i].name}'>${countryGenre[i].name}</span></li>`)
+
+                    let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm px-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${toTitleCase(countryGenre[i].name)}</span></li>`)
                     $('.genres').append(genreCard)
                   }
-
                   $('.genres').click(function(event) {
-                    console.log(event.target.getAttribute('data-genre-name'))
-                    let genreName = event.target.getAttribute('data-genre-name');
+                    console.log(event);
+                    let targetLi = null
+                    if ($(event.target).is('li')) {
+                      targetLi = $(event.target);
+                    } else {
+                      targetLi = $(event.target.parentElement);
+                    }
+                    $('.genres > li').removeClass('active')
+                    targetLi.addClass('active')
+                    console.log(targetLi.attr('data-genre-name'))
+                    let genreName = targetLi.attr('data-genre-name');
                     $.ajax({
                       url: "/play-genre",
                       dataType: 'json',
@@ -118,3 +126,9 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
 
   });
 });
+
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}

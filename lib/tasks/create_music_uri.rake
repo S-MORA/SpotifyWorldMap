@@ -18,7 +18,6 @@ def create_all_playlists(user)
   @playlists = []
   offset = 0
   while offset < 7101
-    print "making request for offset #{offset}"
     @playlists += user.playlists(limit: 50, offset: offset)
     offset += 50
   end
