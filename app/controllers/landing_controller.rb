@@ -19,7 +19,7 @@ class LandingController < ApplicationController
   def country_genres
     country = params[:country]
     @countrygenres = Country.find_by('name': country).genres
-    render json: @countrygenres
+    render json: @countrygenres.reverse
   end
 
   def play_genre

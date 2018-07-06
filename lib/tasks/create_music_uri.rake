@@ -1,22 +1,17 @@
 task music_uri: :environment do
   RSpotify.authenticate("722c32a9059e4ae8884bf2aad1838e1a", ENV['SPOTIFY_SECRET_ID'])
-  spotify = RSpotify::User.find('thesoundsofspotify');
+  spotify = RSpotify::User.find('thesoundsofspotify')
   genres = Genre.all
-
+  countries = Country.all
   create_all_playlists(spotify)
 
   genres.each do |genre|
-    offset = 0;
-    check_playlists(genre)
+      check_playlists(genre)
   end
-
-  countries = Country.all
 
   countries.each do |country|
-    offset = 0;
     check_playlists(country)
   end
-
 end
 
 def create_all_playlists(user)
@@ -39,4 +34,5 @@ def check_playlists(type)
       break
     end
   end
+
 end
