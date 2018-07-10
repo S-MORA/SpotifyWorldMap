@@ -12,8 +12,12 @@ class LandingController < ApplicationController
 
   def country
     country = Country.find_by('name': params[:country])
-    @URI = "https://open.spotify.com/embed?uri=#{country.uri}"
-    render json: {uri: @URI}
+    if country.present?
+      @URI = "https://open.spotify.com/embed?uri=#{country.uri}"
+      render json: {success: true, uri: @URI}
+    else
+      render json: {success: false, message: "There is not enough data on this country"}
+    end
   end
 
   def country_genres
@@ -24,13 +28,7 @@ class LandingController < ApplicationController
 
   def play_genre
     genre = Genre.find_by('name': params[:genre])
-      if genre.uri.present?
-      @URI = "https://open.spotify.com/embed?uri=#{genre.uri}"
-     else
-       playlists = RSpotify::Playlist.search("#{genre}")
-       uri = playlists.first.uri
-       @URI = "https://open.spotify.com/embed?uri=#{uri}"
-     end
+    @URI = "https://open.spotify.com/embed?uri=#{genre.uri}"
     render json: {uri: @URI}
   end
 

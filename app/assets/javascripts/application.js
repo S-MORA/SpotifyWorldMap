@@ -18,7 +18,6 @@
 
 
 $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53f80ce1850b9060c0/samples/data/world-population-density.json', function(data) {
-  console.log(data)
   $.each(data, function() {
     this.value = (this.value < 1 ? 1 : this.value);
 
@@ -34,7 +33,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
     },
 
     title: {
-      text: 'About'
+      text: ' '
     },
 
     mapNavigation: {
@@ -61,9 +60,14 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
                 data: {
                   country: this.name
                 },
-                success: function(json) {
-                  console.log(json)
-                  $('iframe').attr('src', json.uri)
+                success: function(response) {
+                  console.log(response);
+                  if (response.success) {
+                    $('iframe').attr('src', response.uri)
+                  } else {
+                    let genreCard = $(`<li class='genre-card'><img class="icon-xsm px-4" src="assets/gen-icon.png">${response.message}</li>`)
+                    $('.genres').append(genreCard)
+                  }
 
                 },
               })

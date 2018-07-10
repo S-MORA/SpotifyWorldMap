@@ -3,12 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url('https://fonts.googleapis.com/css?family=Righteous');
 @import url('https://fonts.googleapis.com/css?family=Assistant:600');
-
-$black: #222326;
-$dark-black: #121314;
-$light-gray: #DCDCDC;
-$green: #1db954;
-
+@import 'partials/variables';
 
 .icon-sm {
   width: 50px
@@ -51,8 +46,6 @@ $green: #1db954;
      }
     }
   }
-
-
 
   // content map
 #map-container {
