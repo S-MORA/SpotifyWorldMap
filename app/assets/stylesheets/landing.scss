@@ -28,15 +28,19 @@
     color: white;
     width: 180px;
 }
+
  ul {
   list-style: none;
   padding: 0;
   margin: 0;
   li{
-    padding: 12px 0px;
+    padding: 12px 8px;
     color: $light-gray;
     font-size: 15px;
     font-family: 'Assistant', sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     cursor: pointer;
     &.active {
       border-left: 5px solid $green;

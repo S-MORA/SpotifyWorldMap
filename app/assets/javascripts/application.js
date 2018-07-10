@@ -120,7 +120,7 @@ $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53
       name: 'Population density',
       states: {
         hover: {
-          color: 'yellow'
+          color: '#1db954'
         }
       },
       tooltip: {
