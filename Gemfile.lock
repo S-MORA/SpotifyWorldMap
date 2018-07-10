@@ -75,7 +75,6 @@ GEM
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    google_visualr (2.5.1)
     hashie (3.5.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -223,7 +222,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
-  google_visualr (>= 2.5)
+  i18n
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)

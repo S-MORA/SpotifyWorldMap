@@ -24,7 +24,13 @@ class LandingController < ApplicationController
 
   def play_genre
     genre = Genre.find_by('name': params[:genre])
-    @URI = "https://open.spotify.com/embed?uri=#{genre.uri}"
+      if genre.uri.present?
+      @URI = "https://open.spotify.com/embed?uri=#{genre.uri}"
+     else
+       playlists = RSpotify::Playlist.search("#{genre}")
+       uri = playlists.first.uri
+       @URI = "https://open.spotify.com/embed?uri=#{uri}"
+     end
     render json: {uri: @URI}
   end
 

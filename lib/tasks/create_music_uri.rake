@@ -25,9 +25,8 @@ end
 
 
 def check_playlists(type)
-  print "array length: #{@playlists.length}"
   @playlists.each do |playlist|
-    if playlist.name.downcase.strip == "the sound of #{type.name.downcase.strip}" || playlist.name.strip == "The Sound of #{type.name.titleize.strip}" || playlist.name.downcase.strip == "the sound of the #{type.name.downcase.strip}"
+    if I18n.transliterate(playlist.name.downcase.strip) == "the sound of #{type.name.downcase.strip}" || I18n.transliterate(playlist.name.strip) == "The Sound of #{type.name.titleize.strip}" || I18n.transliterate(playlist.name.downcase.strip) == "the sound of the #{type.name.downcase.strip}"
       type.uri = playlist.uri
       type.save
       break
