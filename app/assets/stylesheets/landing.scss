@@ -59,3 +59,12 @@
   flex-direction: column;
 
 }
+
+input{
+background: url("search-icon.png") top left no-repeat;
+outline: none; 
+height:25px;
+padding-left:25px;
+background-color: white;
+border-radius: 35px
+}

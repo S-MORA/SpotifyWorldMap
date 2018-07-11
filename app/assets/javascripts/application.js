@@ -134,29 +134,31 @@ $(document).ready(function() {
     });
   });
   //
-  $('#submit').click(function() {
-    $('.genres').empty()
-    $.ajax({
-      url: "/search",
-      dataType: 'json',
-      data: {
-        search: $("#search-input").val()
-      },
-      success: function(search) {
-        if (search.success) {
-          $('iframe').attr('src', search.uri)
-          for (let i = 0; i < search.genres.length; i++) {
+  $('input').keypress(function(e) {
+    if (e.which == '13') {
+      $('.genres').empty()
+      $.ajax({
+        url: "/search",
+        dataType: 'json',
+        data: {
+          search: $("#search-input").val()
+        },
+        success: function(search) {
+          if (search.success) {
+            $('iframe').attr('src', search.uri)
+            for (let i = 0; i < search.genres.length; i++) {
 
-            let genreCard = $(`<li class='genre-card' data-genre-name='${search.genres[i].name}'><img class="icon-xsm px-4" src="assets/${search.genres[i].icon}-icon.png"><span>${toTitleCase(search.genres[i].name)}</span></li>`)
+              let genreCard = $(`<li class='genre-card' data-genre-name='${search.genres[i].name}'><img class="icon-xsm px-4" src="assets/${search.genres[i].icon}-icon.png"><span>${toTitleCase(search.genres[i].name)}</span></li>`)
+              $('.genres').append(genreCard)
+            }
+          } else {
+            let genreCard = $(`<li class='genre-card'>${search.message}</li>`)
             $('.genres').append(genreCard)
           }
-        } else {
-          let genreCard = $(`<li class='genre-card'>${search.message}</li>`)
-          $('.genres').append(genreCard)
-        }
 
-      }
-    })
+        }
+      })
+    }
   })
 
 
