@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/country', to: 'landing#country'
   get '/genres', to: 'landing#country_genres'
   get '/play-genre', to: 'landing#play_genre'
+  get '/search', to: 'landing#search'
 end
