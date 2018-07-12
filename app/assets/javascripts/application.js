@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require jquery/dist/jquery
-//= require highcharts/highmaps.js
-//= require highcharts/customworld.js
+//= require highcharts/highmaps
+//= require highcharts/customworld
 //= require_tree .
 
 $(document).ready(function() {
