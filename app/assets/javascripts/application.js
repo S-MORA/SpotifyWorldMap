@@ -77,7 +77,7 @@ $(document).ready(function() {
                   success: function(countryGenre) {
 
                     for (let i = 0; i < countryGenre.length; i++) {
-                      let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm px-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${toTitleCase(countryGenre[i].name)}</span></li>`)
+                      let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-sm px-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${toTitleCase(countryGenre[i].name)}</span></li>`)
                       $('.genres').append(genreCard)
                     }
 
@@ -119,7 +119,7 @@ $(document).ready(function() {
             $('iframe').attr('src', search.uri)
             for (let i = 0; i < search.genres.length; i++) {
 
-              let genreCard = $(`<li class='genre-card' data-genre-name='${search.genres[i].name}'><img class="icon-xsm px-4" src="assets/${search.genres[i].icon}-icon.png"><span>${toTitleCase(search.genres[i].name)}</span></li>`)
+              let genreCard = $(`<li class='genre-card' data-genre-name='${search.genres[i].name}'><img class="icon-sm px-4" src="assets/${search.genres[i].icon}-icon.png"><span>${toTitleCase(search.genres[i].name)}</span></li>`)
               $('.genres').append(genreCard)
             }
           } else {

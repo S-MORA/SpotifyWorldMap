@@ -16,11 +16,273 @@
  */
 
 @import 'partials/variables';
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Assistant:600');
 
 html, body {
   height: 100%;
   background-color: $dark-black;
   &.modal-active {
     overflow: hidden;
+  }
+}
+
+.icon-xsm {
+  width: 50px
+}
+
+.icon-sm {
+  width: 68px
+}
+
+.logo {
+  font-family: 'Righteous', cursive;
+  font-size: 26px
+}
+
+.position-img {
+    position: relative;
+    bottom: 25px;
+    padding: 12px;
+}
+
+.position-logo{
+  position: relative;
+  left: 25px;
+  margin-top: 5px;
+}
+.sidebar {
+    height: 90vh;
+    z-index: 1;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: $black;
+    color: white;
+    width: 180px;
+}
+
+ ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li{
+    padding: 12px 8px;
+    color: $light-gray;
+    font-size: 15px;
+    font-family: 'Assistant', sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    &.active {
+      border-left: 5px solid $green;
+     }
+     &:hover{
+       color: white;
+     }
+    }
+  }
+
+#map-container {
+  max-height: 82vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+//search box
+input{
+background: url("search-icon.png") top left no-repeat;
+outline: none;
+height:24px;
+padding-left:25px;
+background-color: white;
+border-radius: 35px
+}
+
+//Modal / about the app
+#modal-container {
+  position:fixed;
+  display:table;
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  transform:scale(0);
+  z-index:1;
+  &.about-button {
+    transform:scale(1);
+    .modal-background {
+      background:rgba(0,0,0,.0);
+      animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+      .modal {
+        background-color:transparent;
+        animation: modalFadeIn .5s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        h2, h5, p {
+          opacity:0;
+          position:relative;
+          animation: modalContentFadeIn .5s 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        }
+        .modal-svg {
+          rect {
+            animation: sketchIn .5s .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+        }
+      }
+    }
+    &.out {
+      animation: quickScaleDown 0s .5s linear forwards;
+      .modal-background {
+        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+        .modal {
+          animation: modalFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          h2, h5, p {
+            animation: modalContentFadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+          }
+          .modal-svg {
+            rect {
+              animation: sketchOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .modal-background {
+    display:table-cell;
+    background:rgba(0,0,0,.8);
+    text-align:center;
+    vertical-align:middle;
+    .modal {
+      background:white;
+      padding:40px;
+      display:inline-block;
+      border-radius:3px;
+      font-weight:300;
+      position:relative;
+      h2 {
+        font-size:25px;
+        line-height:25px;
+        margin-bottom:15px;
+      }
+      p {
+        line-height:20px;
+      }
+
+      .modal-svg {
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:100%;
+        border-radius:3px;
+        rect {
+          stroke: #fff;
+          stroke-width: 2px;
+          stroke-dasharray: 778;
+          stroke-dashoffset: 778;
+        }
+      }
+    }
+  }
+}
+
+.about {
+  display:inline-block;
+  text-align:center;
+  padding:5px 20px;
+  font-size:14px;
+  font-family: 'Righteous', cursive;
+  color:$light-gray;
+  cursor:pointer;
+  &:hover {
+    color:white;
+  }
+}
+
+.sm {
+  font-size:10px
+}
+.xsm {
+  font-size:9px
+}
+
+@keyframes fadeIn {
+  0% {
+    background:rgba(0,0,0,.0);
+  }
+  100% {
+    background:rgba(0,0,0,.7);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    background:rgba(0,0,0,.7);
+  }
+  100% {
+    background:rgba(0,0,0,.0);
+  }
+}
+
+@keyframes quickScaleDown {
+  0% {
+    transform:scale(1);
+  }
+  99.9% {
+    transform:scale(1);
+  }
+  100% {
+    transform:scale(0);
+  }
+}
+
+@keyframes sketchIn {
+	0% {
+		stroke-dashoffset: 778;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes sketchOut {
+	0% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 778;
+	}
+}
+
+@keyframes modalFadeIn {
+  0% {
+    background-color:transparent;
+  }
+  100% {
+    background-color:white;
+  }
+}
+
+@keyframes modalFadeOut {
+  0% {
+    background-color:white;
+  }
+  100% {
+    background-color:transparent;
+  }
+}
+
+@keyframes modalContentFadeIn {
+  0% {
+    opacity:0;
+    top:-20px;
+  }
+  100% {
+    opacity:1;
+    top:0;
   }
 }
