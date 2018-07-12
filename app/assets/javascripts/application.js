@@ -62,7 +62,7 @@ $(document).ready(function() {
                     if (response.success) {
                       $('iframe').attr('src', response.uri)
                     } else {
-                      let genreCard = $(`<li class='genre-card ml-2'>${response.message}</li>`)
+                      let genreCard = $(`<li style="white-space: inherit" class="ml-4 my-1">${response.message}</li>`)
                       $('.genres').append(genreCard)
                     }
 
@@ -123,7 +123,7 @@ $(document).ready(function() {
               $('.genres').append(genreCard)
             }
           } else {
-            let genreCard = $(`<li class='genre-card ml-2'>${search.message}</li>`)
+            let genreCard = $(`<li style="white-space: inherit" class="ml-4 my-1">${search.message}</li>`)
             $('.genres').append(genreCard)
           }
         }

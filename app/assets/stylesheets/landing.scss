@@ -17,6 +17,18 @@
   font-family: 'Righteous', cursive;
   font-size: 26px
 }
+
+.position-img {
+    position: relative;
+    bottom: 25px;
+    padding: 12px;
+}
+
+.position-logo{
+  position: relative;
+  left: 25px;
+  margin-top: 5px;
+}
 .sidebar {
     height: 90vh;
     z-index: 1;
