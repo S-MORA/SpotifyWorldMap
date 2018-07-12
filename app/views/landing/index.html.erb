@@ -15,7 +15,8 @@
 
         <div class="col-md-10 px-0">
             <nav class="navbar">
-                  <input class="" id="search-input" name="search" placeholder="Search..">
+                <input class="" id="search-input" name="search" placeholder="Search">
+                <div id="about-button" class="about">ABOUT</div>
             </nav>
           <div id="map-container"></div>
         </div>
@@ -27,6 +28,24 @@
   <div class="row no-gutters">
     <div class="col-md-12">
       <iframe src="https://open.spotify.com/embed?uri=<%=@URI%>" width="100%" height="75px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="modal-container">
+  <div class="modal-background">
+    <div class="modal">
+      <h2>Muse map</h2>
+      <h5>This is an effort to give people a way to connect with the rest of the world through music.</h5>
+      <p>"A genre is credited to a country if at least 10% or so of the genre's artists come from that country,<br> so a genre can appear in multiple countries."<br>
+      <span class="text-muted sm">- everynoise.com/Glenn McDonald</span><br><br>
+      The map only has data for countries that Spotify has sufficient listening activity to produce useful playlists.
+    </p>
+      <p class="sm"><strong>Big</strong> thanks to Spotify and Glenn McDonald for making this possible.<br>
+      <span class="text-muted xsm">source code: github.com/S-MORA</span></p>
+      <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+					<rect x="0" y="0" fill="none" width="768" height="290" rx="3" ry="3"></rect>
+			</svg>
     </div>
   </div>
 </div>

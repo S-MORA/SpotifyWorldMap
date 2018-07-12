@@ -18,16 +18,12 @@
 
 $(document).ready(function() {
 
-
-
   $.getJSON('https://cdn.rawgit.com/highcharts/highcharts/680f5d50a47e90f53d814b53f80ce1850b9060c0/samples/data/world-population-density.json', function(data) {
     $.each(data, function() {
       this.value = (this.value < 1 ? 1 : this.value);
 
     });
 
-
-    // Initiate the chart
     Highcharts.mapChart('map-container', {
       chart: {
         map: 'custom/world',
@@ -55,7 +51,6 @@ $(document).ready(function() {
           point: {
             events: {
               click: function() {
-                console.log(this.name)
                 $('.genres').empty()
                 $.ajax({
                   url: "/country",
@@ -64,11 +59,10 @@ $(document).ready(function() {
                     country: this.name
                   },
                   success: function(response) {
-                    console.log(response);
                     if (response.success) {
                       $('iframe').attr('src', response.uri)
                     } else {
-                      let genreCard = $(`<li class='genre-card'><img class="icon-xsm px-4" src="assets/gen-icon.png">${response.message}</li>`)
+                      let genreCard = $(`<li class='genre-card ml-2'>${response.message}</li>`)
                       $('.genres').append(genreCard)
                     }
 
@@ -83,33 +77,10 @@ $(document).ready(function() {
                   success: function(countryGenre) {
 
                     for (let i = 0; i < countryGenre.length; i++) {
-
                       let genreCard = $(`<li class='genre-card' data-genre-name='${countryGenre[i].name}'><img class="icon-xsm px-4" src="assets/${countryGenre[i].icon}-icon.png"><span>${toTitleCase(countryGenre[i].name)}</span></li>`)
                       $('.genres').append(genreCard)
                     }
-                    $('.genres').click(function(event) {
-                      console.log(event);
-                      let targetLi = null
-                      if ($(event.target).is('li')) {
-                        targetLi = $(event.target);
-                      } else {
-                        targetLi = $(event.target.parentElement);
-                      }
-                      $('.genres > li').removeClass('active')
-                      targetLi.addClass('active')
-                      console.log(targetLi.attr('data-genre-name'))
-                      let genreName = targetLi.attr('data-genre-name');
-                      $.ajax({
-                        url: "/play-genre",
-                        dataType: 'json',
-                        data: {
-                          genre: genreName
-                        },
-                        success: function(genre) {
-                          $('iframe').attr('src', genre.uri)
-                        }
-                      });
-                    })
+
                   }
                 })
               }
@@ -152,17 +123,37 @@ $(document).ready(function() {
               $('.genres').append(genreCard)
             }
           } else {
-            let genreCard = $(`<li class='genre-card'>${search.message}</li>`)
+            let genreCard = $(`<li class='genre-card ml-2'>${search.message}</li>`)
             $('.genres').append(genreCard)
           }
-
         }
       })
     }
   })
 
-
-
+  $('.genres').click(function(event) {
+    console.log(event);
+    let targetLi = null
+    if ($(event.target).is('li')) {
+      targetLi = $(event.target);
+    } else {
+      targetLi = $(event.target.parentElement);
+    }
+    $('.genres > li').removeClass('active')
+    targetLi.addClass('active')
+    console.log(targetLi.attr('data-genre-name'))
+    let genreName = targetLi.attr('data-genre-name');
+    $.ajax({
+      url: "/play-genre",
+      dataType: 'json',
+      data: {
+        genre: genreName
+      },
+      success: function(genre) {
+        $('iframe').attr('src', genre.uri)
+      }
+    });
+  })
 
   function toTitleCase(str) {
     return str.replace(/\w\S*/g, function(txt) {
@@ -170,4 +161,14 @@ $(document).ready(function() {
     });
   }
 
+  $('.about').click(function() {
+    let buttonId = $(this).attr('id');
+    $('#modal-container').removeAttr('class').addClass(buttonId);
+    $('body').addClass('modal-active');
+  })
+
+  $('#modal-container').click(function() {
+    $(this).addClass('out');
+    $('body').removeClass('modal-active');
+  });
 });

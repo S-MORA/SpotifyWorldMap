@@ -20,5 +20,7 @@
 html, body {
   height: 100%;
   background-color: $dark-black;
-
+  &.modal-active {
+    overflow: hidden;
+  }
 }
