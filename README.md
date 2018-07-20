@@ -12,3 +12,6 @@ Nokogiri gem to scrape everynoise.com for the genre data.
 i18N gem to translate genre names  
 jQuery  
 Bootstrap for basic grid classes.  
+
+
+![alt text]()
