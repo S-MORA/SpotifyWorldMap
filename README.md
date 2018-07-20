@@ -14,4 +14,4 @@ jQuery
 Bootstrap for basic grid classes.  
 
 
-![alt text]()
+![alt text](https://github.com/S-MORA/SpotifyWorldMap/blob/master/screenshot.png)
