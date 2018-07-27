@@ -6,8 +6,6 @@ class LandingController < ApplicationController
   end
 
   def index
-   playlist = RSpotify::Playlist.find('thesoundsofspotify', '7uqYdS5eDfOwIsYEEFqeng')
-   @URI = playlist.uri
   end
 
   def country
